@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="CinemaHubData">
+      <ConnectionProperties>
+        <DataProvider />
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:DataSourceID>1a7a7dce-68f1-49a0-8279-783ae3a4b790</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="FinancialData">
+      <Query>
+        <DataSourceName>CinemaHubData</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="GroupLevel"><DataField>GroupLevel</DataField><rd:TypeName>System.Int32</rd:TypeName></Field>
+        <Field Name="GenreName"><DataField>GenreName</DataField><rd:TypeName>System.String</rd:TypeName></Field>
+        <Field Name="MovieTitle"><DataField>MovieTitle</DataField><rd:TypeName>System.String</rd:TypeName></Field>
+        <Field Name="SessionDate"><DataField>SessionDate</DataField><rd:TypeName>System.DateTime</rd:TypeName></Field>
+        <Field Name="TicketCount"><DataField>TicketCount</DataField><rd:TypeName>System.Int32</rd:TypeName></Field>
+        <Field Name="GrossAmount"><DataField>GrossAmount</DataField><rd:TypeName>System.Decimal</rd:TypeName></Field>
+        <Field Name="PaidAmount"><DataField>PaidAmount</DataField><rd:TypeName>System.Decimal</rd:TypeName></Field>
+        <Field Name="PaidPercent"><DataField>PaidPercent</DataField><rd:TypeName>System.Decimal</rd:TypeName></Field>
+        <Field Name="GroupLabel"><DataField>GroupLabel</DataField><rd:TypeName>System.String</rd:TypeName></Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="ReportTitle">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs><Paragraph><TextRuns><TextRun><Value>АНАЛІТИКА КАСОВИХ ЗБОРІВ</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>22pt</FontSize><FontWeight>Bold</FontWeight><Color>#1F3A5F</Color></Style></TextRun></TextRuns><Style /></Paragraph></Paragraphs>
+            <rd:DefaultName>ReportTitle</rd:DefaultName>
+            <Top>0cm</Top><Left>0cm</Left><Height>1cm</Height><Width>26cm</Width>
+            <Style><Border><Style>None</Style></Border><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight></Style>
+          </Textbox>
+          <Textbox Name="ReportPeriod">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs><Paragraph><TextRuns><TextRun><Value>="Період сеансів: " &amp; Parameters!ReportFrom.Value &amp; " — " &amp; Parameters!ReportTo.Value</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>10pt</FontSize><Color>#475569</Color></Style></TextRun></TextRuns><Style /></Paragraph></Paragraphs>
+            <rd:DefaultName>ReportPeriod</rd:DefaultName>
+            <Top>1.05cm</Top><Left>0cm</Left><Height>0.55cm</Height><Width>26cm</Width>
+            <Style><Border><Style>None</Style></Border><VerticalAlign>Middle</VerticalAlign><PaddingLeft>2pt</PaddingLeft></Style>
+          </Textbox>
+          <Tablix Name="FinancialSummary">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn><Width>9cm</Width></TablixColumn>
+                <TablixColumn><Width>2.5cm</Width></TablixColumn>
+                <TablixColumn><Width>4.5cm</Width></TablixColumn>
+                <TablixColumn><Width>4.5cm</Width></TablixColumn>
+                <TablixColumn><Width>4cm</Width></TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.85cm</Height>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="HeaderLabel"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>Жанр / фільм / дата</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight><Color>#FFFFFF</Color></Style></TextRun></TextRuns><Style /></Paragraph></Paragraphs><rd:DefaultName>HeaderLabel</rd:DefaultName><Style><Border><Color>#FFFFFF</Color><Style>Solid</Style></Border><BackgroundColor>#1F3A5F</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>6pt</PaddingLeft><PaddingRight>4pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="HeaderCount"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>Квитків</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight><Color>#FFFFFF</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>HeaderCount</rd:DefaultName><Style><Border><Color>#FFFFFF</Color><Style>Solid</Style></Border><BackgroundColor>#1F3A5F</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>3pt</PaddingLeft><PaddingRight>5pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="HeaderGross"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>Нараховано, грн</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight><Color>#FFFFFF</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>HeaderGross</rd:DefaultName><Style><Border><Color>#FFFFFF</Color><Style>Solid</Style></Border><BackgroundColor>#1F3A5F</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>3pt</PaddingLeft><PaddingRight>5pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="HeaderPaid"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>Сплачено, грн</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight><Color>#FFFFFF</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>HeaderPaid</rd:DefaultName><Style><Border><Color>#FFFFFF</Color><Style>Solid</Style></Border><BackgroundColor>#1F3A5F</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>3pt</PaddingLeft><PaddingRight>5pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="HeaderPercent"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>Оплата, %</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><FontWeight>Bold</FontWeight><Color>#FFFFFF</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>HeaderPercent</rd:DefaultName><Style><Border><Color>#FFFFFF</Color><Style>Solid</Style></Border><BackgroundColor>#1F3A5F</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>3pt</PaddingLeft><PaddingRight>5pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.72cm</Height>
+                  <TablixCells>
+                    <TablixCell><CellContents><Textbox Name="GroupLabel"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!GroupLabel.Value</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>=IIF(Fields!GroupLevel.Value = 0, "10pt", "9pt")</FontSize><FontWeight>=IIF(Fields!GroupLevel.Value = 0 OR Fields!GroupLevel.Value = 1 OR Fields!GroupLevel.Value = 3, "Bold", "Normal")</FontWeight><Color>=IIF(Fields!GroupLevel.Value = 2, "#475569", "#1F3A5F")</Color></Style></TextRun></TextRuns><Style /></Paragraph></Paragraphs><rd:DefaultName>GroupLabel</rd:DefaultName><Style><Border><Color>#D5DDE8</Color><Style>Solid</Style><Width>0.5pt</Width></Border><BackgroundColor>=Switch(Fields!GroupLevel.Value = 0, "#E4EDF8", Fields!GroupLevel.Value = 1, "#F1F5F9", Fields!GroupLevel.Value = 2, "#FFFFFF", True, "#DCE6F5")</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>6pt</PaddingLeft><PaddingRight>4pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="TicketCount"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!TicketCount.Value</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><Format>N0</Format><Color>#334155</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>TicketCount</rd:DefaultName><Style><Border><Color>#D5DDE8</Color><Style>Solid</Style><Width>0.5pt</Width></Border><BackgroundColor>=Switch(Fields!GroupLevel.Value = 0, "#E4EDF8", Fields!GroupLevel.Value = 1, "#F1F5F9", Fields!GroupLevel.Value = 2, "#FFFFFF", True, "#DCE6F5")</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>3pt</PaddingLeft><PaddingRight>5pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="GrossAmount"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!GrossAmount.Value</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><Format>N2</Format><Color>#334155</Color></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>GrossAmount</rd:DefaultName><Style><Border><Color>#D5DDE8</Color><Style>Solid</Style><Width>0.5pt</Width></Border><BackgroundColor>=Switch(Fields!GroupLevel.Value = 0, "#E4EDF8", Fields!GroupLevel.Value = 1, "#F1F5F9", Fields!GroupLevel.Value = 2, "#FFFFFF", True, "#DCE6F5")</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>3pt</PaddingLeft><PaddingRight>5pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="PaidAmount"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!PaidAmount.Value</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><Format>N2</Format><Color>=Switch(Fields!PaidPercent.Value &gt;= 80, "#2E7D32", Fields!PaidPercent.Value &gt;= 50, "#B7791F", True, "#C62828")</Color><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>PaidAmount</rd:DefaultName><Style><Border><Color>#D5DDE8</Color><Style>Solid</Style><Width>0.5pt</Width></Border><BackgroundColor>=Switch(Fields!GroupLevel.Value = 0, "#E4EDF8", Fields!GroupLevel.Value = 1, "#F1F5F9", Fields!GroupLevel.Value = 2, "#FFFFFF", True, "#DCE6F5")</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>3pt</PaddingLeft><PaddingRight>5pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                    <TablixCell><CellContents><Textbox Name="PaidPercent"><CanGrow>true</CanGrow><KeepTogether>true</KeepTogether><Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!PaidPercent.Value</Value><Style><FontFamily>Segoe UI</FontFamily><FontSize>9pt</FontSize><Format>N1</Format><Color>=Switch(Fields!PaidPercent.Value &gt;= 80, "#2E7D32", Fields!PaidPercent.Value &gt;= 50, "#B7791F", True, "#C62828")</Color><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs><rd:DefaultName>PaidPercent</rd:DefaultName><Style><Border><Color>#D5DDE8</Color><Style>Solid</Style><Width>0.5pt</Width></Border><BackgroundColor>=Switch(Fields!GroupLevel.Value = 0, "#E4EDF8", Fields!GroupLevel.Value = 1, "#F1F5F9", Fields!GroupLevel.Value = 2, "#FFFFFF", True, "#DCE6F5")</BackgroundColor><VerticalAlign>Middle</VerticalAlign><PaddingLeft>3pt</PaddingLeft><PaddingRight>5pt</PaddingRight></Style></Textbox></CellContents></TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy><TablixMembers><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /></TablixMembers></TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember><KeepWithGroup>After</KeepWithGroup><RepeatOnNewPage>true</RepeatOnNewPage></TablixMember>
+                <TablixMember><Group Name="Details" /></TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>FinancialData</DataSetName>
+            <Top>1.8cm</Top><Left>0cm</Left><Height>1.57cm</Height><Width>24.5cm</Width>
+            <Style><Border><Style>None</Style></Border></Style>
+          </Tablix>
+        </ReportItems>
+        <Height>3.5cm</Height>
+        <Style><Border><Style>None</Style></Border></Style>
+      </Body>
+      <Width>26cm</Width>
+      <Page><PageHeight>21cm</PageHeight><PageWidth>29.7cm</PageWidth><LeftMargin>1.5cm</LeftMargin><RightMargin>1.5cm</RightMargin><TopMargin>1cm</TopMargin><BottomMargin>1cm</BottomMargin><Style /></Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="ReportFrom"><DataType>String</DataType><Prompt>ReportFrom</Prompt></ReportParameter>
+    <ReportParameter Name="ReportTo"><DataType>String</DataType><Prompt>ReportTo</Prompt></ReportParameter>
+  </ReportParameters>
+  <Language>uk-UA</Language>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>19d4f047-6f38-4d80-a7b0-ec7b35f360f4</rd:ReportID>
+</Report>
